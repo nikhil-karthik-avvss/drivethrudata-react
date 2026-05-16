@@ -1,0 +1,8 @@
+/* App-level resets */
+#root {
+  min-height: 100vh;
+}
+
+main {
+  display: block;
+}
