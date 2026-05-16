@@ -1,3 +1,4 @@
+import DevBanner from './components/DevBanner';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import MissionVision from './components/MissionVision';
@@ -11,6 +12,7 @@ import Footer from './components/Footer';
 export default function App() {
   return (
     <>
+      <DevBanner />
       <Navbar />
       <main>
         <Hero />
