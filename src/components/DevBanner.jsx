@@ -11,10 +11,8 @@ export default function DevBanner() {
       top: '16px',
       right: '16px',
       zIndex: 9999,
-      backgroundColor: 'rgba(220, 38, 38, 0.15)',
-      border: '1px solid rgba(220, 38, 38, 0.4)',
-      backdropFilter: 'blur(10px)',
-      WebkitBackdropFilter: 'blur(10px)',
+      backgroundColor: '#dc2626',
+      border: '1px solid #b91c1c',
       borderRadius: '10px',
       padding: '12px 14px',
       maxWidth: '260px',
@@ -23,8 +21,8 @@ export default function DevBanner() {
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '10px' }}>
         <div style={{ display: 'flex', gap: '8px', alignItems: 'flex-start' }}>
           <span style={{ fontSize: '14px', flexShrink: 0, marginTop: '1px' }}>⚠️</span>
-          <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.92)', lineHeight: '1.5', fontFamily: 'sans-serif' }}>
-            <strong style={{ display: 'block', color: '#fca5a5', marginBottom: '3px', fontSize: '12px' }}>
+          <div style={{ fontSize: '12px', color: '#fff', lineHeight: '1.5', fontFamily: 'sans-serif' }}>
+            <strong style={{ display: 'block', color: '#fff', marginBottom: '3px', fontSize: '12px' }}>
               Development Preview
             </strong>
             Official site at{' '}
@@ -32,7 +30,7 @@ export default function DevBanner() {
               href="https://drivethrudata.com"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ color: '#fca5a5', textDecoration: 'underline' }}
+              style={{ color: '#fff', textDecoration: 'underline' }}
             >
               drivethrudata.com
             </a>
@@ -44,7 +42,7 @@ export default function DevBanner() {
           style={{
             background: 'none',
             border: 'none',
-            color: 'rgba(255,255,255,0.6)',
+            color: '#fff',
             cursor: 'pointer',
             fontSize: '16px',
             lineHeight: 1,
