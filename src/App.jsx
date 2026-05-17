@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import MissionVision from './components/MissionVision';
 import BusinessModel from './components/BusinessModel';
 import Services from './components/Services';
+import Industry from './components/Industry';
 import TechFocus from './components/TechFocus';
 import HowWeWork from './components/HowWeWork';
 import Contact from './components/Contact';
@@ -19,6 +20,7 @@ export default function App() {
         <MissionVision />
         <BusinessModel />
         <Services />
+        <Industry />
         <TechFocus />
         <HowWeWork />
         <Contact />
