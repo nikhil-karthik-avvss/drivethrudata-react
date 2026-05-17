@@ -1,3 +1,5 @@
+import { Routes, Route } from 'react-router-dom';
+import FounderPage from './pages/FounderPage';
 import DevBanner from './components/DevBanner';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -8,10 +10,11 @@ import Industry from './components/Industry';
 import TechFocus from './components/TechFocus';
 import Platforms from './components/Platforms';
 import HowWeWork from './components/HowWeWork';
+import Careers from './components/Careers';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
-export default function App() {
+function HomePage() {
   return (
     <>
       <DevBanner />
@@ -25,9 +28,19 @@ export default function App() {
         <TechFocus />
         <Platforms />
         <HowWeWork />
+        <Careers />
         <Contact />
       </main>
       <Footer />
     </>
+  );
+}
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/founder" element={<FounderPage />} />
+    </Routes>
   );
 }

@@ -1,0 +1,291 @@
+.founder-page {
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+/* ─── Header ─── */
+.founder-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.founder-header__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.founder-header__logo img {
+  height: 36px;
+  width: auto;
+}
+
+.founder-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: none;
+  color: var(--text-body);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+.founder-back-btn:hover {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+.founder-back-btn svg { width: 16px; height: 16px; }
+
+/* ─── Main ─── */
+.founder-main {
+  padding: 60px 24px 100px;
+}
+.founder-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+/* ─── Hero card ─── */
+.founder-hero {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 48px;
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 48px;
+  position: relative;
+  overflow: hidden;
+}
+.founder-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--accent-teal));
+}
+
+.founder-hero__photo-wrap {
+  width: 100%;
+  aspect-ratio: 3/4;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+}
+.founder-hero__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+.founder-hero__photo-fallback {
+  display: none;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+}
+.founder-hero__photo-fallback svg { width: 64px; height: 64px; }
+
+.founder-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 12px;
+}
+.founder-name {
+  font-family: var(--font-heading);
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: var(--text-heading);
+  line-height: 1.1;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+.founder-credentials-line {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+.founder-tagline {
+  font-size: 0.95rem;
+  color: var(--text-body);
+  line-height: 1.75;
+}
+
+/* ─── Body sections ─── */
+.founder-body {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.founder-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.founder-section__title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-heading);
+}
+.founder-section__title svg { width: 18px; height: 18px; color: var(--primary); flex-shrink: 0; }
+
+/* Education cards */
+.founder-cards-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.founder-cred-card {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--primary-light);
+  border: 1px solid rgba(19,82,204,0.15);
+  border-radius: var(--radius-sm);
+}
+.founder-cred-card__label {
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--primary);
+  flex-shrink: 0;
+  min-width: 52px;
+}
+.founder-cred-card__detail {
+  font-size: 0.83rem;
+  color: var(--text-body);
+}
+
+/* Certifications */
+.founder-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.founder-cert-tag {
+  padding: 6px 14px;
+  background: rgba(22,163,74,0.08);
+  border: 1px solid rgba(22,163,74,0.2);
+  color: var(--accent-green);
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Experience */
+.founder-exp-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.founder-exp-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.875rem;
+  color: var(--text-body);
+  line-height: 1.6;
+}
+.founder-exp-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--primary);
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+
+/* Contact */
+.founder-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.founder-contact-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-muted);
+  border: 1px solid var(--border);
+  transition: background var(--transition);
+  text-decoration: none;
+}
+a.founder-contact-row:hover { background: var(--primary-light); }
+.founder-contact-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--primary-light);
+  border: 1px solid rgba(19,82,204,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+.founder-contact-icon svg { width: 16px; height: 16px; }
+.founder-contact-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 2px;
+}
+.founder-contact-value {
+  font-size: 0.85rem;
+  color: var(--text-body);
+  font-weight: 500;
+}
+
+@media (max-width: 900px) {
+  .founder-hero { grid-template-columns: 1fr; gap: 28px; padding: 32px; }
+  .founder-hero__photo-wrap { width: 180px; aspect-ratio: 1; border-radius: 50%; }
+  .founder-name { font-size: 2rem; }
+  .founder-body { grid-template-columns: 1fr; }
+}
+@media (max-width: 580px) {
+  .founder-main { padding: 32px 16px 80px; }
+  .founder-hero { padding: 24px; }
+  .founder-name { font-size: 1.7rem; }
+}
