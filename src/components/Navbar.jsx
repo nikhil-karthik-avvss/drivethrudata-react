@@ -54,15 +54,6 @@ export default function Navbar() {
       <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
         <div className="container navbar__inner">
           <a href="#home" className="navbar__logo" onClick={() => handleNav('#home')}>
-            <img
-              src="https://drivethrudata.com/images/logo.png"
-              alt="DriveThruData"
-              className="navbar__logo-img"
-              onError={(e) => {
-                e.target.style.display = 'none';
-                e.target.nextSibling.style.display = 'flex';
-              }}
-            />
             <span className="navbar__logo-text">
               DriveThru<span className="logo-accent">Data</span>
             </span>

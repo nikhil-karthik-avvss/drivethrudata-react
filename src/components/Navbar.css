@@ -74,7 +74,7 @@
   object-fit: contain;
 }
 .navbar__logo-text {
-  display: none;
+  display: inline;
   font-family: var(--font-heading);
   font-size: 1.25rem;
   font-weight: 800;
