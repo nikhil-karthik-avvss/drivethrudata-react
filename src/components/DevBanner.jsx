@@ -7,50 +7,55 @@ export default function DevBanner() {
 
   return (
     <div style={{
-      position: 'sticky',
-      top: 0,
+      position: 'fixed',
+      top: '16px',
+      right: '16px',
       zIndex: 9999,
-      backgroundColor: '#1a1a2e',
-      borderBottom: '2px solid #e63946',
-      color: '#f1f1f1',
-      padding: '10px 20px',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: '12px',
-      fontSize: '14px',
-      fontFamily: 'sans-serif',
+      backgroundColor: 'rgba(220, 38, 38, 0.15)',
+      border: '1px solid rgba(220, 38, 38, 0.4)',
+      backdropFilter: 'blur(10px)',
+      WebkitBackdropFilter: 'blur(10px)',
+      borderRadius: '10px',
+      padding: '12px 14px',
+      maxWidth: '260px',
+      boxShadow: '0 4px 20px rgba(220, 38, 38, 0.15)',
     }}>
-      <span style={{ color: '#e63946', fontWeight: 700, fontSize: '16px' }}>⚠</span>
-      <span>
-        This is a <strong>development preview</strong> of the DriveThruData website.
-        The official site is at{' '}
-        <a
-          href="https://drivethrudata.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ color: '#4fc3f7', textDecoration: 'underline' }}
+      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '10px' }}>
+        <div style={{ display: 'flex', gap: '8px', alignItems: 'flex-start' }}>
+          <span style={{ fontSize: '14px', flexShrink: 0, marginTop: '1px' }}>⚠️</span>
+          <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.92)', lineHeight: '1.5', fontFamily: 'sans-serif' }}>
+            <strong style={{ display: 'block', color: '#fca5a5', marginBottom: '3px', fontSize: '12px' }}>
+              Development Preview
+            </strong>
+            Official site at{' '}
+            <a
+              href="https://drivethrudata.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: '#fca5a5', textDecoration: 'underline' }}
+            >
+              drivethrudata.com
+            </a>
+          </div>
+        </div>
+        <button
+          onClick={() => setDismissed(true)}
+          aria-label="Close"
+          style={{
+            background: 'none',
+            border: 'none',
+            color: 'rgba(255,255,255,0.6)',
+            cursor: 'pointer',
+            fontSize: '16px',
+            lineHeight: 1,
+            padding: '0',
+            flexShrink: 0,
+            marginTop: '-1px',
+          }}
         >
-          drivethrudata.com
-        </a>
-        .
-      </span>
-      <button
-        onClick={() => setDismissed(true)}
-        style={{
-          marginLeft: 'auto',
-          background: 'none',
-          border: '1px solid #555',
-          color: '#aaa',
-          borderRadius: '4px',
-          padding: '2px 10px',
-          cursor: 'pointer',
-          fontSize: '13px',
-          flexShrink: 0,
-        }}
-      >
-        Dismiss
-      </button>
+          ×
+        </button>
+      </div>
     </div>
   );
 }
