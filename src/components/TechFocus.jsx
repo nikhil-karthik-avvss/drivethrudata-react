@@ -71,10 +71,6 @@ export default function TechFocus() {
             <p className="section-subtitle">
               Deep technical expertise across the full AI and data stack — from ingestion to intelligent applications.
             </p>
-            <a href="#contact" className="btn-primary" style={{ marginTop: '28px', display: 'inline-flex' }}>
-              Explore Solutions
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
           </div>
 
           <div className="tech-focus__list">
