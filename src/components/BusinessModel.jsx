@@ -5,37 +5,61 @@ const models = [
   {
     acronym: 'DICE',
     name: 'Our Business Transformation Process',
-    full: 'Drive · Innovate · Change · Execute',
-    desc: 'A structured framework to Drive, Innovate, Change, and Execute enterprise-wide data transformations with precision and measurable outcomes.',
     color: 'blue',
+    steps: [
+      { label: 'Data',       desc: 'Understand & Analyse Data Landscape' },
+      { label: 'Insights',   desc: 'Generate Insights and Create Value / Information' },
+      { label: 'Capitalize', desc: 'Convert Value created into drivers for decision making' },
+      { label: 'Encash',     desc: 'Enable Avenues to monetize & encash revenues through AI Assets' },
+    ],
   },
   {
     acronym: '4A',
     name: 'For Execution',
-    full: 'Align · Assess · Activate · Accelerate',
-    desc: 'Four pillars of execution that ensure alignment across teams, assess current capabilities, activate new processes, and accelerate delivery.',
     color: 'orange',
+    steps: [
+      { label: 'Assess',      desc: 'Current Data & AI Landscape' },
+      { label: 'Analyze',     desc: 'Perform feasibility Study' },
+      { label: 'Automate',    desc: 'Through AI technologies & Do End to End Implementation' },
+      { label: 'Accelerate',  desc: 'Business through Value adds and Innovations' },
+    ],
   },
   {
     acronym: 'DETOUR',
     name: 'Our Engagement Model',
-    full: 'Define · Explore · Test · Optimize · Unify · Realize',
-    desc: 'Our signature engagement model that defines, explores, tests, optimizes, unifies, and realizes value from your data and AI investments.',
     color: 'green',
+    steps: [
+      { label: 'Discover',   desc: 'Understand the AS-IS & Identify Scope for AI' },
+      { label: 'Evaluate',   desc: 'Perform Technical & Business feasibility Study' },
+      { label: 'Transform',  desc: 'Implement AI Powered Solution to accelerate Business' },
+      { label: 'Optimize',   desc: 'Monitor & Optimize Performance & stabilize Solutions' },
+      { label: 'UpSkill',    desc: 'Enable, Train and Upskill team to adapt to changes' },
+      { label: 'Realize',    desc: 'Generate business opportunities to create revenue streams' },
+    ],
   },
   {
     acronym: 'DIVINE',
     name: 'Our Value Proposition',
-    full: 'Deliver · Innovate · Vision · Integrate · Nurture · Execute',
-    desc: 'The core value we bring to every engagement — delivering innovation with vision, integrating solutions, nurturing capabilities, and executing results.',
     color: 'purple',
+    steps: [
+      { label: 'Data',        desc: 'Aggregate Data from heterogeneous Sources' },
+      { label: 'Information', desc: 'Process Data into meaningful Information' },
+      { label: 'Value',       desc: 'Convert Information into Value through technology' },
+      { label: 'INnovation',  desc: 'Apply Innovation & Research to encash Value' },
+      { label: 'Engineering', desc: 'Continuously enhance value through our Engineering Process' },
+    ],
   },
   {
     acronym: 'STAIR',
     name: 'Startup Transformation — Agility, Innovation & Research',
-    full: 'Scale · Transform · Accelerate · Integrate · Realize',
-    desc: 'A specialized model for startups to Scale, Transform, Accelerate, Integrate, and Realize AI-driven growth from MVP to market leader.',
     color: 'teal',
+    steps: [
+      { label: 'Startup',    desc: 'Enable Startup to focus on building enterprise grade AI solution' },
+      { label: 'Transform',  desc: 'Work culture through personalized guidance on solution development' },
+      { label: 'Agility',    desc: 'Bring Agility into their thinking and solution development to beat the market needs' },
+      { label: 'Innovation', desc: 'Establish the culture of innovation into their thought Process' },
+      { label: 'Research',   desc: 'Constantly guide stakeholders through Research & Development' },
+    ],
   },
 ];
 
@@ -106,26 +130,26 @@ export default function BusinessModel() {
             <div className="bm__panel-top" style={{ background: c.bg }}>
               <div className="bm__acronym" style={{ color: c.text }}>{m.acronym}</div>
               <div>
-                <p className="bm__full" style={{ color: c.text }}>{m.full}</p>
+                <p className="bm__full" style={{ color: c.text }}>
+                  {m.steps.map(s => s.label).join(' · ')}
+                </p>
                 <h3 className="bm__model-name">{m.name}</h3>
               </div>
             </div>
             <div className="bm__panel-body">
-              <p className="bm__desc">{m.desc}</p>
               <div className="bm__steps">
-                {m.full.split(' · ').map((step, i) => (
-                  <div key={step} className="bm__step" style={{ animationDelay: `${i * 0.07}s` }}>
+                {m.steps.map((step, i) => (
+                  <div key={step.label} className="bm__step" style={{ animationDelay: `${i * 0.07}s` }}>
                     <span className="bm__step-num" style={{ background: c.bg, color: c.text, border: `1px solid ${c.border}` }}>
                       {String(i + 1).padStart(2, '0')}
                     </span>
-                    <span className="bm__step-label">{step}</span>
+                    <div className="bm__step-content">
+                      <span className="bm__step-label" style={{ color: c.text }}>{step.label}</span>
+                      <span className="bm__step-desc">{step.desc}</span>
+                    </div>
                   </div>
                 ))}
               </div>
-              <a href="#contact" className="btn-primary" style={{ marginTop: '24px', display: 'inline-flex' }}>
-                Learn More
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
             </div>
           </div>
         </div>

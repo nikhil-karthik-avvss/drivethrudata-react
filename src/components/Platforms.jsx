@@ -183,6 +183,7 @@ export default function Platforms() {
         <div
           className="platforms__track"
           ref={trackRef}
+          onMouseEnter={() => { manual.current = true; }}
         >
           {items.map((p, i) => (
             <div
