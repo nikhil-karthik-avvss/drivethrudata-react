@@ -111,6 +111,11 @@ const platforms = [
   },
 ];
 
+const CARD_WIDTH = 340;
+const CARD_GAP = 18;
+const STEP = CARD_WIDTH + CARD_GAP;
+const SPEED = 0.7; // px per frame
+
 function useInView(ref) {
   const [v, setV] = useState(false);
   useEffect(() => {
@@ -122,11 +127,45 @@ function useInView(ref) {
 }
 
 export default function Platforms() {
-  const ref = useRef(null);
-  const visible = useInView(ref);
+  const sectionRef = useRef(null);
+  const trackRef = useRef(null);
+  const paused = useRef(false);
+  const raf = useRef(null);
+  const visible = useInView(sectionRef);
+
+  // Duplicate items for seamless infinite loop
+  const items = [...platforms, ...platforms];
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const halfWidth = track.scrollWidth / 2;
+
+    const tick = () => {
+      if (!paused.current && track) {
+        track.scrollLeft += SPEED;
+        if (track.scrollLeft >= halfWidth) {
+          track.scrollLeft -= halfWidth;
+        }
+      }
+      raf.current = requestAnimationFrame(tick);
+    };
+
+    raf.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf.current);
+  }, []);
+
+  const scroll = (dir) => {
+    const track = trackRef.current;
+    if (!track) return;
+    paused.current = true;
+    track.scrollBy({ left: dir * STEP, behavior: 'smooth' });
+    setTimeout(() => { paused.current = false; }, 600);
+  };
 
   return (
-    <section className="platforms" id="platforms" ref={ref}>
+    <section className="platforms" id="platforms" ref={sectionRef}>
       <div className="container">
         <div className={`platforms__header fade-in ${visible ? 'visible' : ''}`}>
           <div className="section-eyebrow">Platform Services</div>
@@ -135,13 +174,24 @@ export default function Platforms() {
             We build and deliver solutions across the leading cloud and data platforms — meeting you wherever your infrastructure lives.
           </p>
         </div>
+      </div>
 
-        <div className="platforms__grid">
-          {platforms.map((p, i) => (
+      <div className="platforms__carousel-wrap">
+        <button className="plat-nav plat-nav--prev" onClick={() => scroll(-1)} aria-label="Previous">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+
+        <div
+          className="platforms__track"
+          ref={trackRef}
+          onMouseEnter={() => { paused.current = true; }}
+          onMouseLeave={() => { paused.current = false; }}
+        >
+          {items.map((p, i) => (
             <div
-              key={p.name}
-              className={`plat-card fade-in ${visible ? 'visible' : ''}`}
-              style={{ transitionDelay: `${i * 0.08}s`, '--plat-color': p.color }}
+              key={i}
+              className="plat-card"
+              style={{ '--plat-color': p.color }}
             >
               <div className="plat-card__top">
                 <div className="plat-card__logo" style={{ background: p.bg, border: `1px solid ${p.border}` }}>
@@ -162,6 +212,10 @@ export default function Platforms() {
             </div>
           ))}
         </div>
+
+        <button className="plat-nav plat-nav--next" onClick={() => scroll(1)} aria-label="Next">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
       </div>
     </section>
   );

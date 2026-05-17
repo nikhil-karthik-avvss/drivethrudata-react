@@ -1,19 +1,61 @@
 .platforms {
   padding: 90px 0;
   background: var(--bg-alt);
+  overflow: hidden;
 }
 
 .platforms__header {
   max-width: 600px;
-  margin-bottom: 52px;
+  margin-bottom: 48px;
 }
 
-.platforms__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+/* ─── Carousel wrapper ─── */
+.platforms__carousel-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 20px;
+}
+
+.platforms__track {
+  display: flex;
   gap: 18px;
+  overflow-x: hidden;
+  scroll-behavior: auto;
+  cursor: grab;
+  flex: 1;
+  /* fade edges */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
 }
+.platforms__track:active { cursor: grabbing; }
 
+/* ─── Nav buttons ─── */
+.plat-nav {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-body);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition), color var(--transition), box-shadow var(--transition);
+  z-index: 2;
+}
+.plat-nav:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+  box-shadow: var(--shadow-md);
+}
+.plat-nav svg { width: 18px; height: 18px; }
+
+/* ─── Card ─── */
 .plat-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -24,11 +66,14 @@
   gap: 14px;
   position: relative;
   overflow: hidden;
+  flex-shrink: 0;
+  width: 340px;
   transition: transform var(--transition), box-shadow var(--transition);
   cursor: default;
+  user-select: none;
 }
 .plat-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
 }
 
@@ -105,10 +150,8 @@
   white-space: nowrap;
 }
 
-@media (max-width: 900px) {
-  .platforms__grid { grid-template-columns: repeat(2, 1fr); }
-}
 @media (max-width: 580px) {
   .platforms { padding: 64px 0; }
-  .platforms__grid { grid-template-columns: 1fr; }
+  .plat-card { width: 280px; }
+  .plat-nav { width: 36px; height: 36px; }
 }
