@@ -129,7 +129,7 @@ function useInView(ref) {
 export default function Platforms() {
   const sectionRef = useRef(null);
   const trackRef = useRef(null);
-  const paused = useRef(false);
+  const manual = useRef(false);
   const raf = useRef(null);
   const visible = useInView(sectionRef);
 
@@ -143,7 +143,7 @@ export default function Platforms() {
     const halfWidth = track.scrollWidth / 2;
 
     const tick = () => {
-      if (!paused.current && track) {
+      if (!manual.current && track) {
         track.scrollLeft += SPEED;
         if (track.scrollLeft >= halfWidth) {
           track.scrollLeft -= halfWidth;
@@ -159,9 +159,8 @@ export default function Platforms() {
   const scroll = (dir) => {
     const track = trackRef.current;
     if (!track) return;
-    paused.current = true;
+    manual.current = true; // latch — stays manual for the rest of the session
     track.scrollBy({ left: dir * STEP, behavior: 'smooth' });
-    setTimeout(() => { paused.current = false; }, 600);
   };
 
   return (
@@ -184,8 +183,6 @@ export default function Platforms() {
         <div
           className="platforms__track"
           ref={trackRef}
-          onMouseEnter={() => { paused.current = true; }}
-          onMouseLeave={() => { paused.current = false; }}
         >
           {items.map((p, i) => (
             <div
