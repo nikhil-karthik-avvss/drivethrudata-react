@@ -47,10 +47,12 @@
   justify-content: center;
   flex-shrink: 0;
   margin-top: 2px;
+  position: relative;
+  z-index: 1;
 }
 .tech-row__icon svg { width: 22px; height: 22px; }
 
-.tech-row__content { flex: 1; min-width: 0; }
+.tech-row__content { flex: 1; min-width: 0; position: relative; z-index: 1; }
 .tech-row__top {
   display: flex;
   align-items: flex-start;
@@ -86,14 +88,17 @@
 }
 .tech-row__num {
   position: absolute;
-  top: 14px;
-  right: 18px;
+  bottom: -10px;
+  right: 14px;
   font-family: var(--font-heading);
-  font-size: 1.3rem;
-  font-weight: 800;
-  color: var(--border-strong);
+  font-size: 5.5rem;
+  font-weight: 900;
   line-height: 1;
-  flex-shrink: 0;
+  color: var(--text-heading);
+  opacity: 0.04;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
 }
 
 @media (max-width: 1000px) {
