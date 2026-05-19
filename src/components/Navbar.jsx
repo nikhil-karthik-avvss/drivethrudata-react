@@ -54,6 +54,7 @@ export default function Navbar() {
       <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
         <div className="container navbar__inner">
           <a href="#home" className="navbar__logo" onClick={() => handleNav('#home')}>
+            <img src="/logo-transparent.png" alt="DriveThruData" className="navbar__logo-img" />
             <span className="navbar__logo-text">
               DriveThru<span className="logo-accent">Data</span>
             </span>
