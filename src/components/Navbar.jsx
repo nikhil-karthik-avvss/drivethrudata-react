@@ -1,21 +1,21 @@
 import { useState, useEffect } from 'react';
+import { NavLink, Link } from 'react-router-dom';
 import './Navbar.css';
 
 const navLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'About Us', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Industries', href: '#industry' },
-  { label: 'Technology', href: '#technology' },
-  { label: 'Platforms', href: '#platforms' },
-  { label: 'Careers', href: '#careers' },
-  { label: 'Contact Us', href: '#contact' },
+  { label: 'Home',        to: '/' },
+  { label: 'About Us',   to: '/about' },
+  { label: 'Solutions',  to: '/solutions' },
+  { label: 'Industries', to: '/industries' },
+  { label: 'Technology', to: '/technology' },
+  { label: 'Platforms',  to: '/platforms' },
+  { label: 'Careers',    to: '/careers' },
+  { label: 'Contact Us', to: '/contact' },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState('home');
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -28,10 +28,11 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
 
-  const handleNav = (href) => {
-    setMenuOpen(false);
-    setActiveLink(href.replace('#', ''));
-  };
+  const linkClass = ({ isActive }) =>
+    `navbar__link${isActive ? ' navbar__link--active' : ''}`;
+
+  const mobileLinkClass = ({ isActive }) =>
+    `mobile-menu__link${isActive ? ' mobile-menu__link--active' : ''}`;
 
   return (
     <>
@@ -53,30 +54,26 @@ export default function Navbar() {
 
       <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
         <div className="container navbar__inner">
-          <a href="#home" className="navbar__logo" onClick={() => handleNav('#home')}>
+          <Link to="/" className="navbar__logo">
             <img src="/logo-transparent.png" alt="DriveThruData" className="navbar__logo-img" />
             <span className="navbar__logo-text">
               DriveThru<span className="logo-accent">Data</span>
             </span>
-          </a>
+          </Link>
 
           <ul className="navbar__links">
             {navLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  className={`navbar__link ${activeLink === link.href.replace('#', '') ? 'navbar__link--active' : ''}`}
-                  onClick={() => handleNav(link.href)}
-                >
+              <li key={link.to}>
+                <NavLink to={link.to} end={link.to === '/'} className={linkClass}>
                   {link.label}
-                </a>
+                </NavLink>
               </li>
             ))}
           </ul>
 
-          <a href="#contact" className="navbar__cta btn-primary" onClick={() => handleNav('#contact')}>
+          <Link to="/contact" className="navbar__cta btn-primary">
             Get Started
-          </a>
+          </Link>
 
           <button
             className={`navbar__hamburger ${menuOpen ? 'navbar__hamburger--open' : ''}`}
@@ -90,16 +87,21 @@ export default function Navbar() {
         <div className={`mobile-menu ${menuOpen ? 'mobile-menu--open' : ''}`}>
           <ul className="mobile-menu__links">
             {navLinks.map((link) => (
-              <li key={link.href}>
-                <a href={link.href} className="mobile-menu__link" onClick={() => handleNav(link.href)}>
+              <li key={link.to}>
+                <NavLink
+                  to={link.to}
+                  end={link.to === '/'}
+                  className={mobileLinkClass}
+                  onClick={() => setMenuOpen(false)}
+                >
                   {link.label}
-                </a>
+                </NavLink>
               </li>
             ))}
           </ul>
-          <a href="#contact" className="btn-primary mobile-menu__cta" onClick={() => handleNav('#contact')}>
+          <Link to="/contact" className="btn-primary mobile-menu__cta" onClick={() => setMenuOpen(false)}>
             Get Started
-          </a>
+          </Link>
           <div className="mobile-menu__footer">
             <a href="tel:+918148530499" className="top-bar__item" style={{ color: 'var(--text-body)' }}>+91 8148530499</a>
             <a href="mailto:info@drivethrudata.com" className="top-bar__item" style={{ color: 'var(--text-body)' }}>info@drivethrudata.com</a>

@@ -1,0 +1,7 @@
+.solutions-placeholder {
+  padding: 120px 0;
+  background: var(--bg);
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+}
