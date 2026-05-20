@@ -37,6 +37,13 @@ const industries = [
     color: 'teal',
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>,
   },
+  {
+    title: 'Accounting & Finance',
+    desc: 'Modernizing financial operations with AI-powered forecasting, automated reporting, fraud detection, and real-time analytics that turn raw numbers into strategic intelligence.',
+    tags: ['Financial Forecasting', 'Fraud Detection', 'Automated Reporting'],
+    color: 'indigo',
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8h3m0 0v3m0-3l3 3"/></svg>,
+  },
 ];
 
 const colorMap = {
@@ -45,6 +52,7 @@ const colorMap = {
   purple: { bg: 'rgba(124,58,237,0.08)',  text: 'var(--accent-purple)', border: 'rgba(124,58,237,0.2)' },
   orange: { bg: 'rgba(249,115,22,0.08)',  text: 'var(--accent-orange)', border: 'rgba(249,115,22,0.2)' },
   teal:   { bg: 'rgba(8,145,178,0.08)',   text: 'var(--accent-teal)',   border: 'rgba(8,145,178,0.2)' },
+  indigo: { bg: 'rgba(79,70,229,0.08)',   text: '#4F46E5',              border: 'rgba(79,70,229,0.2)' },
 };
 
 function useInView(ref) {

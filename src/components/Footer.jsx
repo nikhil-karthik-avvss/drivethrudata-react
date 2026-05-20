@@ -1,10 +1,15 @@
+import { Link } from 'react-router-dom';
 import './Footer.css';
 
 const quickLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'About Us', href: '#about' },
-  { label: 'Contact Us', href: '#contact' },
-  { label: 'Careers', href: '#careers' },
+  { label: 'Home',        to: '/' },
+  { label: 'About Us',   to: '/about' },
+  { label: 'Solutions',  to: '/solutions' },
+  { label: 'Industries', to: '/industries' },
+  { label: 'Technology', to: '/technology' },
+  { label: 'Platforms',  to: '/platforms' },
+  { label: 'Careers',    to: '/careers' },
+  { label: 'Contact Us', to: '/contact' },
 ];
 
 const services = [
@@ -24,15 +29,10 @@ export default function Footer() {
           <div className="footer__grid">
             {/* Brand */}
             <div className="footer__brand">
-              <div className="footer__logo">
-                <img
-                  src="https://drivethrudata.com/images/logo.png"
-                  alt="DriveThruData"
-                  className="footer__logo-img"
-                  onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block'; }}
-                />
-                <span className="footer__logo-fallback" style={{ display: 'none' }}>DriveThruData</span>
-              </div>
+              <Link to="/" className="footer__logo">
+                <img src="/logo-transparent.png" alt="DriveThruData" className="footer__logo-img" />
+                <span className="footer__logo-text">DriveThru<span className="footer__logo-accent">Data</span></span>
+              </Link>
               <p className="footer__desc">
                 Pioneer in AI &amp; Data Management Consulting. Building data-mature organizations that scale through intelligence.
               </p>
@@ -53,7 +53,7 @@ export default function Footer() {
               <h4 className="footer__col-title">Quick Links</h4>
               <ul className="footer__list">
                 {quickLinks.map(l => (
-                  <li key={l.href}><a href={l.href} className="footer__link">{l.label}</a></li>
+                  <li key={l.to}><Link to={l.to} className="footer__link">{l.label}</Link></li>
                 ))}
               </ul>
             </div>

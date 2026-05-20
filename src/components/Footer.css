@@ -14,19 +14,28 @@
 }
 
 /* Brand */
-.footer__logo { margin-bottom: 14px; }
+.footer__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  margin-bottom: 14px;
+}
 .footer__logo-img {
-  height: 38px;
+  height: 36px;
   width: auto;
   object-fit: contain;
-  filter: brightness(1.15);
+  filter: brightness(1.2);
 }
-.footer__logo-fallback {
-  font-family: var(--font-heading);
-  font-size: 1.3rem;
+.footer__logo-text {
+  font-family: 'Big Shoulders Display', var(--font-heading);
+  font-size: 1.35rem;
   font-weight: 800;
   color: #fff;
+  letter-spacing: 0.01em;
+  line-height: 1;
 }
+.footer__logo-accent { color: var(--accent-teal); }
 .footer__desc {
   font-size: 0.875rem;
   line-height: 1.7;

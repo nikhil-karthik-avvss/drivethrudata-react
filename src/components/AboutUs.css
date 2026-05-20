@@ -76,34 +76,27 @@
 .why-card__desc { font-size: 0.875rem; color: var(--text-body); line-height: 1.7; }
 
 /* ════════════════════════════════
-   Founder Section
+   Consultants Section
 ════════════════════════════════ */
-.founder-section {
+.consultants-section {
   padding: 90px 0;
   background: var(--bg);
 }
 
-.founder-section__header { max-width: 520px; margin-bottom: 48px; }
+.consultants-section__header { max-width: 520px; margin-bottom: 48px; }
 
-.founder-profile {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-
-/* Hero row: photo + identity */
-.founder-profile__hero {
-  display: flex;
-  align-items: center;
-  gap: 36px;
+/* ── Consultant Card ── */
+.consultant-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
-  padding: 36px;
-  position: relative;
   overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
-.founder-profile__hero::before {
+.consultant-card::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
@@ -111,128 +104,227 @@
   background: linear-gradient(90deg, var(--primary), var(--accent-teal));
 }
 
-.founder-profile__photo-wrap {
-  width: 140px; height: 140px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 3px solid var(--primary-light);
+/* ── Identity row ── */
+.consultant-card__identity {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 36px 36px 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.consultant-card__info {
+  flex: 1;
+}
+
+.consultant-card__photo {
+  width: 160px;
   flex-shrink: 0;
-  background: var(--bg-alt);
+  display: block;
 }
-.founder-profile__photo { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
-.founder-profile__photo-fallback {
-  display: none; width: 100%; height: 100%;
-  align-items: center; justify-content: center; color: var(--text-muted);
-}
-.founder-profile__photo-fallback svg { width: 48px; height: 48px; }
 
-.founder-profile__name {
+.consultant-card__info { flex: 1; }
+
+.consultant-card__name {
   font-family: var(--font-heading);
-  font-size: 1.6rem; font-weight: 800;
-  color: var(--text-heading); margin-bottom: 4px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-heading);
+  margin-bottom: 4px;
 }
-.founder-profile__creds {
-  font-size: 0.85rem; font-weight: 600;
-  color: var(--text-muted); margin-bottom: 6px;
+
+.consultant-card__creds {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 6px;
 }
-.founder-profile__role {
-  font-size: 0.88rem; font-weight: 600;
-  color: var(--primary); margin-bottom: 16px;
+
+.consultant-card__role {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 14px;
 }
-.founder-profile__companies { display: flex; flex-wrap: wrap; gap: 8px; }
-.founder-chip {
-  font-size: 0.75rem; font-weight: 600;
-  padding: 4px 12px;
-  background: var(--bg-alt);
-  border: 1px solid var(--border);
-  border-radius: 100px;
+
+.consultant-card__companies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.company-logo-img {
+  width: 160px;
+  height: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* ── Professional Summary ── */
+.consultant-summary {
+  padding: 28px 36px;
+  border-bottom: 1px solid var(--border);
+}
+
+.consultant-summary__text {
+  font-size: 0.9rem;
   color: var(--text-body);
+  line-height: 1.8;
+  margin-top: 12px;
 }
 
-/* Details 2x2 grid */
-.founder-profile__details {
+/* ── Block title (shared) ── */
+.consultant-block-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin-bottom: 14px;
+}
+.consultant-block-title svg {
+  width: 16px;
+  height: 16px;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+/* ── Three-column details ── */
+.consultant-details {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
 }
 
-.founder-detail-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 28px;
+.consultant-detail-block {
+  padding: 28px 36px;
+  border-right: 1px solid var(--border);
+}
+.consultant-detail-block:last-child { border-right: none; }
+
+/* ── List (Experience / Skills) ── */
+.consultant-list {
+  list-style: none;
+  padding: 0; margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 8px;
 }
 
-.founder-detail-card__title {
-  display: flex; align-items: center; gap: 8px;
-  font-family: var(--font-heading);
-  font-size: 0.9rem; font-weight: 700;
-  color: var(--text-heading);
+.consultant-list__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.855rem;
+  color: var(--text-body);
+  line-height: 1.5;
 }
-.founder-detail-card__title svg { width: 16px; height: 16px; color: var(--primary); flex-shrink: 0; }
 
-/* Education */
-.founder-edu-list { display: flex; flex-direction: column; gap: 10px; }
-.founder-edu-row {
-  display: flex; align-items: baseline; gap: 10px;
-  padding: 10px 14px;
+.consultant-list__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+  flex-shrink: 0;
+  margin-top: 6px;
+  opacity: 0.75;
+}
+
+/* ── Education ── */
+.consultant-edu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.consultant-edu__row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 9px 13px;
   background: var(--primary-light);
   border: 1px solid rgba(19,82,204,0.15);
   border-radius: var(--radius-sm);
 }
-.founder-edu-row__degree {
-  font-family: var(--font-heading);
-  font-size: 0.75rem; font-weight: 800;
-  color: var(--primary); flex-shrink: 0; min-width: 50px;
-}
-.founder-edu-row__field { font-size: 0.82rem; color: var(--text-body); }
 
-/* Certifications */
-.founder-cert-list { display: flex; flex-wrap: wrap; gap: 8px; }
-.founder-cert-tag {
-  padding: 6px 14px;
+.consultant-edu__degree {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--primary);
+  flex-shrink: 0;
+  min-width: 46px;
+}
+
+.consultant-edu__field {
+  font-size: 0.8rem;
+  color: var(--text-body);
+}
+
+/* ── Certifications ── */
+.consultant-certs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.cert-tag {
+  padding: 5px 13px;
   background: rgba(22,163,74,0.08);
   border: 1px solid rgba(22,163,74,0.2);
   color: var(--accent-green);
   border-radius: 100px;
-  font-size: 0.8rem; font-weight: 600;
+  font-size: 0.78rem;
+  font-weight: 600;
 }
 
-/* Expertise */
-.founder-expertise-list { display: flex; flex-direction: column; gap: 10px; }
-.founder-expertise-item {
-  display: flex; align-items: center; gap: 10px;
-  font-size: 0.855rem; color: var(--text-body);
+/* ── Contact button ── */
+.consultant-contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+  width: 100%;
+  justify-content: center;
 }
-.founder-expertise-dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--primary); flex-shrink: 0; opacity: 0.7;
-}
-
-/* Contact */
-.founder-contact-list { display: flex; flex-direction: column; gap: 10px; }
-.founder-contact-row {
-  display: flex; align-items: flex-start; gap: 10px;
-  font-size: 0.855rem; color: var(--text-body);
-  text-decoration: none;
-  transition: color var(--transition);
-}
-a.founder-contact-row:hover { color: var(--primary); }
-.founder-contact-row svg { width: 15px; height: 15px; flex-shrink: 0; margin-top: 2px; color: var(--primary); }
+.consultant-contact-btn svg { width: 15px; height: 15px; stroke: #fff; flex-shrink: 0; }
+.consultant-contact-btn:hover { background: var(--primary-dark, #0f3fa8); transform: translateY(-1px); }
 
 /* ── Responsive ── */
+@media (max-width: 1024px) {
+  .consultant-details { grid-template-columns: 1fr 1fr; }
+  .consultant-detail-block:nth-child(2) { border-right: none; }
+  .consultant-detail-block:nth-child(3) { border-top: 1px solid var(--border); border-right: none; grid-column: 1 / -1; }
+}
+
 @media (max-width: 860px) {
   .about-intro__cols { grid-template-columns: 1fr; }
   .why-us__grid { grid-template-columns: 1fr; }
-  .founder-profile__details { grid-template-columns: 1fr; }
-  .founder-profile__hero { flex-direction: column; text-align: center; }
-  .founder-profile__companies { justify-content: center; }
+  .consultant-card__identity { flex-direction: column; text-align: center; }
+  .consultant-card__companies { justify-content: center; }
+  .consultant-details { grid-template-columns: 1fr; }
+  .consultant-detail-block { border-right: none; border-top: 1px solid var(--border); }
+  .consultant-detail-block:first-child { border-top: none; }
 }
+
 @media (max-width: 580px) {
-  .about-intro, .why-us, .founder-section { padding: 64px 0; }
-  .founder-profile__photo-wrap { width: 110px; height: 110px; }
-  .founder-profile__name { font-size: 1.3rem; }
+  .about-intro, .why-us, .consultants-section { padding: 64px 0; }
+  .consultant-card__identity { padding: 28px 20px 20px; }
+  .consultant-summary { padding: 20px; }
+  .consultant-detail-block { padding: 20px; }
+  .consultant-card__name { font-size: 1.25rem; }
+  .consultant-card__photo { width: 96px; height: 96px; }
 }

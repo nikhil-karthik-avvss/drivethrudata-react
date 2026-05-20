@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import Hero from './components/Hero';
+import Insight from './components/Insight';
 import MissionVision from './components/MissionVision';
 import BusinessModel from './components/BusinessModel';
 import Services from './components/Services';
@@ -18,6 +19,7 @@ function HomePage() {
   return (
     <Layout>
       <Hero />
+      <Insight />
       <MissionVision />
       <BusinessModel />
       <Services />

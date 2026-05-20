@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './AboutUs.css';
 
 const paragraphs = [
@@ -41,6 +42,37 @@ const colorMap = {
   purple: { bg: 'rgba(124,58,237,0.08)',     text: 'var(--accent-purple)', border: 'rgba(124,58,237,0.2)' },
 };
 
+const companies = [
+  { name: 'TCS',          logo: '/logos/tcs.png',          color: '#cc0000', bg: '#fff0f0' },
+  { name: 'Wipro',        logo: '/logos/wipro.png',         color: '#341c6d', bg: '#f3f0fb' },
+  { name: 'Cognizant',    logo: '/logos/cognizant.png',     color: '#0033a0', bg: '#eef2ff' },
+  { name: 'Tech Mahindra',logo: '/logos/tech-mahindra.png',                    color: '#ba0c2f', bg: '#fff0f3' },
+  { name: 'Oracle',       logo: '/logos/oracle.png',        color: '#f80000', bg: '#fff0f0' },
+  { name: 'ISRO',         logo: '/logos/isro.png',          color: '#003087', bg: '#eef2ff' },
+];
+
+const experience = [
+  'Head Data Analytics & AI',
+  'Cloud Practice Head',
+  'Group Practice Head — Digital Transformation',
+  'Engineering Manager',
+  'Chief Data Scientist',
+  'Program Management (Onsite USA, UK & Europe)',
+  'Delivery Head — Retail, BFSI, Mfg, HC & LS',
+];
+
+const skills = [
+  'Advanced AI — Gen AI & Agent AI',
+  'Model Training & Deployment',
+  'Data Engineering',
+  'Data Governance',
+  'Datalake, Deltalake & DataMesh',
+  'Cloud — AWS, Azure & GCP',
+  'Application Modernization',
+  'Infra Modernization',
+  'DevOps, AIops, MLOps, DataOps',
+];
+
 const education = [
   { degree: 'Ph.D',   field: 'MultiCloud Management' },
   { degree: 'M.Tech', field: 'Data Science & Engineering' },
@@ -49,17 +81,10 @@ const education = [
 
 const certifications = ['Azure Cloud Certified', 'Gen AI Certified'];
 
-const expertise = [
-  'Advanced AI & Model Training', 'Data Engineering', 'Cloud Platforms (AWS, Azure, GCP)',
-  'Application & Infrastructure Modernization', 'DevOps / MLOps / DataOps', 'Global Delivery Leadership',
-];
-
-const companies = ['TCS', 'Tech Mahindra', 'Cognizant', 'Wipro'];
-
 function useInView(ref) {
   const [v, setV] = useState(false);
   useEffect(() => {
-    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setV(true); }, { threshold: 0.08 });
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setV(true); }, { threshold: 0.05 });
     if (ref.current) obs.observe(ref.current);
     return () => obs.disconnect();
   }, [ref]);
@@ -69,36 +94,35 @@ function useInView(ref) {
 export default function AboutUs() {
   const ref = useRef(null);
   const visible = useInView(ref);
+  const navigate = useNavigate();
 
   return (
     <div ref={ref}>
 
-      {/* ── About Us ── */}
+      {/* ══ About Us ══ */}
       <section className="about-intro">
         <div className="container">
           <div className={`about-intro__header fade-in ${visible ? 'visible' : ''}`}>
             <div className="section-eyebrow">Who We Are</div>
             <h2 className="section-title">About <span>Us</span></h2>
           </div>
-          <div className="about-intro__body">
-            <p className={`about-intro__lead fade-in ${visible ? 'visible' : ''}`} style={{ transitionDelay: '0.1s' }}>
-              {paragraphs[0]}
-            </p>
-            <div className="about-intro__cols">
-              {paragraphs.slice(1).map((p, i) => (
-                <p key={i} className={`about-intro__para fade-in ${visible ? 'visible' : ''}`} style={{ transitionDelay: `${0.15 + i * 0.08}s` }}>
-                  {p}
-                </p>
-              ))}
-            </div>
+          <p className={`about-intro__lead fade-in ${visible ? 'visible' : ''}`} style={{ transitionDelay: '0.1s' }}>
+            {paragraphs[0]}
+          </p>
+          <div className="about-intro__cols">
+            {paragraphs.slice(1).map((p, i) => (
+              <p key={i} className={`about-intro__para fade-in ${visible ? 'visible' : ''}`} style={{ transitionDelay: `${0.15 + i * 0.08}s` }}>
+                {p}
+              </p>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ── Why Choose Us ── */}
+      {/* ══ Why Choose Us ══ */}
       <section className="why-us">
         <div className="container">
-          <div className={`why-us__header fade-in ${visible ? 'visible' : ''}`} style={{ transitionDelay: '0.2s' }}>
+          <div className={`why-us__header fade-in ${visible ? 'visible' : ''}`}>
             <div className="section-eyebrow">Our Advantage</div>
             <h2 className="section-title">Why Choose <span>Us ....</span></h2>
           </div>
@@ -106,7 +130,7 @@ export default function AboutUs() {
             {reasons.map((r, i) => {
               const c = colorMap[r.color];
               return (
-                <div key={r.title} className={`why-card fade-in ${visible ? 'visible' : ''}`} style={{ transitionDelay: `${0.25 + i * 0.09}s` }}>
+                <div key={r.title} className={`why-card fade-in ${visible ? 'visible' : ''}`} style={{ transitionDelay: `${0.1 + i * 0.08}s` }}>
                   <div className="why-card__icon" style={{ background: c.bg, color: c.text, border: `1px solid ${c.border}` }}>{r.icon}</div>
                   <div className="why-card__body">
                     <h3 className="why-card__title" style={{ color: c.text }}>{r.title}</h3>
@@ -120,98 +144,105 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* ── Founder / Contact ── */}
-      <section className="founder-section">
+      {/* ══ Consultants ══ */}
+      <section className="consultants-section">
         <div className="container">
-          <div className={`founder-section__header fade-in ${visible ? 'visible' : ''}`}>
+          <div className={`consultants-section__header fade-in ${visible ? 'visible' : ''}`}>
             <div className="section-eyebrow">Leadership</div>
-            <h2 className="section-title">Meet Our <span>Founder</span></h2>
+            <h2 className="section-title">Our <span>Consultants</span></h2>
           </div>
 
-          <div className={`founder-profile fade-in ${visible ? 'visible' : ''}`} style={{ transitionDelay: '0.1s' }}>
+          <div className={`consultant-card fade-in ${visible ? 'visible' : ''}`} style={{ transitionDelay: '0.1s' }}>
 
-            {/* Photo + identity */}
-            <div className="founder-profile__hero">
-              <div className="founder-profile__photo-wrap">
-                <img
-                  src="https://drivethrudata.com/images/contact1.jpg"
-                  alt="Dr. Baskaran Jambunathan"
-                  className="founder-profile__photo"
-                  onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
-                />
-                <div className="founder-profile__photo-fallback">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                </div>
+            {/* ── Identity row ── */}
+            <div className="consultant-card__identity">
+              <img
+                src="https://drivethrudata.com/images/contact1.jpg"
+                alt="Dr. Baskaran Jambunathan"
+                className="consultant-card__photo"
+              />
+              <div className="consultant-card__info">
+                <h3 className="consultant-card__name">Dr. Baskaran Jambunathan</h3>
+                <p className="consultant-card__creds">M.Sc &nbsp;·&nbsp; M.Tech &nbsp;·&nbsp; Ph.D</p>
+                <p className="consultant-card__role">Founder &amp; Chief AI Strategist — DriveThruData</p>
               </div>
-              <div className="founder-profile__identity">
-                <h3 className="founder-profile__name">Dr. Baskaran Jambunathan</h3>
-                <p className="founder-profile__creds">M.Sc &nbsp;·&nbsp; M.Tech &nbsp;·&nbsp; Ph.D</p>
-                <p className="founder-profile__role">Founder — DriveThruData</p>
-                <div className="founder-profile__companies">
-                  {companies.map(c => <span key={c} className="founder-chip">{c}</span>)}
-                </div>
-              </div>
+              <img src="/logos/companies.png" alt="Companies worked at" className="company-logo-img" />
             </div>
 
-            {/* Details grid */}
-            <div className="founder-profile__details">
+            {/* ── Professional Summary ── */}
+            <div className="consultant-summary">
+              <h4 className="consultant-block-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                Professional Summary
+              </h4>
+              <p className="consultant-summary__text">
+                Strong Technology delivery experience in AI, Data, Digital Transformation, building Industry solutions using AI Strategy, Consulting and Solution delivery. Having experience in leading AI &amp; Data practice in TCS, Tech Mahindra, Cognizant &amp; Wipro. Managed Global delivery for multiple customer engagement and delivered solutions at enterprise level.
+              </p>
+            </div>
 
-              <div className="founder-detail-card">
-                <h4 className="founder-detail-card__title">
+            {/* ── Three-column detail grid ── */}
+            <div className="consultant-details">
+
+              <div className="consultant-detail-block">
+                <h4 className="consultant-block-title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+                  Experience
+                </h4>
+                <ul className="consultant-list">
+                  {experience.map((e, i) => (
+                    <li key={i} className="consultant-list__item">
+                      <span className="consultant-list__dot" />
+                      {e}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="consultant-detail-block">
+                <h4 className="consultant-block-title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                  Skills
+                </h4>
+                <ul className="consultant-list">
+                  {skills.map((s, i) => (
+                    <li key={i} className="consultant-list__item">
+                      <span className="consultant-list__dot" style={{ background: 'var(--accent-teal)' }} />
+                      {s}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="consultant-detail-block">
+                <h4 className="consultant-block-title">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
                   Education
                 </h4>
-                <div className="founder-edu-list">
+                <div className="consultant-edu">
                   {education.map(e => (
-                    <div key={e.degree} className="founder-edu-row">
-                      <span className="founder-edu-row__degree">{e.degree}</span>
-                      <span className="founder-edu-row__field">{e.field}</span>
+                    <div key={e.degree} className="consultant-edu__row">
+                      <span className="consultant-edu__degree">{e.degree}</span>
+                      <span className="consultant-edu__field">{e.field}</span>
                     </div>
                   ))}
                 </div>
-              </div>
 
-              <div className="founder-detail-card">
-                <h4 className="founder-detail-card__title">
+                <h4 className="consultant-block-title" style={{ marginTop: '24px' }}>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
                   Certifications
                 </h4>
-                <div className="founder-cert-list">
-                  {certifications.map(c => <span key={c} className="founder-cert-tag">{c}</span>)}
+                <div className="consultant-certs">
+                  {certifications.map(c => <span key={c} className="cert-tag">{c}</span>)}
                 </div>
-              </div>
 
-              <div className="founder-detail-card">
-                <h4 className="founder-detail-card__title">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
-                  Core Expertise
-                </h4>
-                <div className="founder-expertise-list">
-                  {expertise.map(e => (
-                    <div key={e} className="founder-expertise-item">
-                      <span className="founder-expertise-dot" />
-                      {e}
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="founder-detail-card">
-                <h4 className="founder-detail-card__title">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.95 12 19.79 19.79 0 01.88 3.4 2 2 0 012.86 1.21h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                  Contact
-                </h4>
-                <div className="founder-contact-list">
-                  {[
-                    { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>, value: 'drivethrudata99@gmail.com', href: 'mailto:drivethrudata99@gmail.com' },
-                    { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>, value: 'info@drivethrudata.com', href: 'mailto:info@drivethrudata.com' },
-                    { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>, value: '43 B, Velachery Main Road, Chennai-42', href: null },
-                  ].map((item, i) => (
-                    item.href
-                      ? <a key={i} href={item.href} className="founder-contact-row">{item.icon}{item.value}</a>
-                      : <div key={i} className="founder-contact-row">{item.icon}{item.value}</div>
-                  ))}
-                </div>
+                <button
+                  className="consultant-contact-btn"
+                  onClick={() => navigate('/contact')}
+                  style={{ marginTop: '24px' }}
+                >
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  Contact Us
+                </button>
               </div>
 
             </div>

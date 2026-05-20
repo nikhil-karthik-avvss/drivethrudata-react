@@ -10,7 +10,7 @@ const techs = [
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v4c0 1.657 4.03 3 9 3s9-1.343 9-3V5"/><path d="M3 9v4c0 1.657 4.03 3 9 3s9-1.343 9-3V9"/><path d="M3 13v4c0 1.657 4.03 3 9 3s9-1.343 9-3v-4"/></svg>,
   },
   {
-    title: 'Data Analytics — AI/ML/DL',
+    title: 'Data Analytics — AI / ML / DL',
     desc: 'Advanced analytics, machine learning, and deep learning solutions to derive predictive insights and automate data-driven decisions.',
     tags: ['TensorFlow', 'PyTorch', 'Scikit-learn', 'Power BI', 'Tableau'],
     color: 'orange',
@@ -40,17 +40,17 @@ const techs = [
 ];
 
 const colorMap = {
-  blue:   { bg: 'var(--primary-light)',       text: 'var(--primary)',       border: 'rgba(19,82,204,0.2)' },
-  orange: { bg: 'rgba(249,115,22,0.08)',       text: 'var(--accent-orange)', border: 'rgba(249,115,22,0.2)' },
-  green:  { bg: 'rgba(22,163,74,0.08)',        text: 'var(--accent-green)',  border: 'rgba(22,163,74,0.2)' },
-  purple: { bg: 'rgba(124,58,237,0.08)',       text: 'var(--accent-purple)', border: 'rgba(124,58,237,0.2)' },
-  teal:   { bg: 'rgba(8,145,178,0.08)',        text: 'var(--accent-teal)',   border: 'rgba(8,145,178,0.2)' },
+  blue:   { solid: 'var(--primary)',       light: 'var(--primary-light)',      border: 'rgba(19,82,204,0.18)',  glow: 'rgba(19,82,204,0.15)' },
+  orange: { solid: 'var(--accent-orange)', light: 'rgba(249,115,22,0.08)',     border: 'rgba(249,115,22,0.2)',  glow: 'rgba(249,115,22,0.15)' },
+  green:  { solid: 'var(--accent-green)',  light: 'rgba(22,163,74,0.08)',      border: 'rgba(22,163,74,0.2)',   glow: 'rgba(22,163,74,0.15)' },
+  purple: { solid: 'var(--accent-purple)', light: 'rgba(124,58,237,0.08)',     border: 'rgba(124,58,237,0.2)',  glow: 'rgba(124,58,237,0.15)' },
+  teal:   { solid: 'var(--accent-teal)',   light: 'rgba(13,148,136,0.08)',     border: 'rgba(13,148,136,0.2)',  glow: 'rgba(13,148,136,0.15)' },
 };
 
 function useInView(ref) {
   const [v, setV] = useState(false);
   useEffect(() => {
-    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setV(true); }, { threshold: 0.1 });
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setV(true); }, { threshold: 0.05 });
     if (ref.current) obs.observe(ref.current);
     return () => obs.disconnect();
   }, [ref]);
@@ -64,44 +64,46 @@ export default function TechFocus() {
   return (
     <section className="tech-focus" id="technology" ref={ref}>
       <div className="container">
-        <div className="tech-focus__layout">
-          <div className={`tech-focus__header fade-in ${visible ? 'visible' : ''}`}>
-            <div className="section-eyebrow">Expertise</div>
-            <h2 className="section-title">Technology <span>Focus</span></h2>
-            <p className="section-subtitle">
-              Deep technical expertise across the full AI and data stack — from ingestion to intelligent applications.
-            </p>
-          </div>
 
-          <div className="tech-focus__list">
-            {techs.map((t, i) => {
-              const c = colorMap[t.color];
-              return (
-                <div
-                  key={t.title}
-                  className={`tech-row fade-in ${visible ? 'visible' : ''}`}
-                  style={{ transitionDelay: `${i * 0.09}s` }}
-                >
-                  <div className="tech-row__icon" style={{ background: c.bg, color: c.text, border: `1px solid ${c.border}` }}>
-                    {t.icon}
-                  </div>
-                  <div className="tech-row__content">
-                    <div className="tech-row__top">
-                      <h3 className="tech-row__title">{t.title}</h3>
-                      <div className="tech-row__tags">
-                        {t.tags.map(tag => (
-                          <span key={tag} className="tech-pill" style={{ background: c.bg, color: c.text, border: `1px solid ${c.border}` }}>{tag}</span>
-                        ))}
-                      </div>
-                    </div>
-                    <p className="tech-row__desc">{t.desc}</p>
-                  </div>
-                  <span className="tech-row__num">{String(i + 1).padStart(2, '0')}</span>
-                </div>
-              );
-            })}
-          </div>
+        <div className={`tech-focus__header fade-in ${visible ? 'visible' : ''}`}>
+          <div className="section-eyebrow">Expertise</div>
+          <h2 className="section-title">Technology <span>Focus</span></h2>
+          <p className="section-subtitle">
+            Deep technical expertise across the full AI and data stack — from ingestion to intelligent applications.
+          </p>
         </div>
+
+        <div className="tech-grid">
+          {techs.map((t, i) => {
+            const c = colorMap[t.color];
+            return (
+              <div
+                key={t.title}
+                className={`tech-card fade-in ${visible ? 'visible' : ''}`}
+                style={{
+                  transitionDelay: `${i * 0.08}s`,
+                  '--c-solid': c.solid,
+                  '--c-light': c.light,
+                  '--c-border': c.border,
+                  '--c-glow': c.glow,
+                }}
+              >
+                <div className="tech-card__top">
+                  <div className="tech-card__icon">{t.icon}</div>
+                  <span className="tech-card__num">{String(i + 1).padStart(2, '0')}</span>
+                </div>
+                <h3 className="tech-card__title">{t.title}</h3>
+                <p className="tech-card__desc">{t.desc}</p>
+                <div className="tech-card__tags">
+                  {t.tags.map(tag => (
+                    <span key={tag} className="tech-card__tag">{tag}</span>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
       </div>
     </section>
   );
