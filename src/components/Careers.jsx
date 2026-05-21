@@ -6,6 +6,7 @@ const roles = [
     no: '01',
     title: 'AI Consultant',
     color: 'blue',
+    emails: ['drivethrudata99@gmail.com'],
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
         <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
@@ -21,6 +22,7 @@ const roles = [
     no: '02',
     title: 'Student Interns',
     color: 'orange',
+    emails: ['drivethrudata99@gmail.com'],
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
         <path d="M12 14l9-5-9-5-9 5 9 5z"/>
@@ -74,13 +76,13 @@ const roles = [
     type: 'Part-Time Consultant',
     color: 'teal',
     emails: ['drivethrudata99@gmail.com', 'info@drivethrudata.com'],
+    qualLabel: true,
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
         <ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
         <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
       </svg>
     ),
-    qualLabel: true,
     points: [
       'Overall 15+ years of experience with min 4–5 years in Data Engineering, Data Analytics, Databricks, Snowflake, data pipelines, Data Governance, etc.',
       'Strong experience in solution development for client-specific problems in Data Engineering & Analytics.',
@@ -92,12 +94,12 @@ const roles = [
     type: 'Part-Time Consultant',
     color: 'indigo',
     emails: ['drivethrudata99@gmail.com', 'info@drivethrudata.com'],
+    qualLabel: true,
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
         <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
       </svg>
     ),
-    qualLabel: true,
     points: [
       'Overall 15+ years of experience with minimum 2–3 years in Data Analytics, AI/ML, Gen AI & Agent AI solution development and design for customer projects.',
       'Strong experience in building AI solution architecture & design for client-specific problems.',
@@ -106,18 +108,18 @@ const roles = [
 ];
 
 const colorMap = {
-  blue:   { bg: 'var(--primary-light)',        text: 'var(--primary)',        border: 'rgba(19,82,204,0.2)' },
-  orange: { bg: 'rgba(249,115,22,0.08)',        text: 'var(--accent-orange)',  border: 'rgba(249,115,22,0.2)' },
-  green:  { bg: 'rgba(22,163,74,0.08)',         text: 'var(--accent-green)',   border: 'rgba(22,163,74,0.2)' },
-  purple: { bg: 'rgba(124,58,237,0.08)',        text: 'var(--accent-purple)',  border: 'rgba(124,58,237,0.2)' },
-  teal:   { bg: 'rgba(8,145,178,0.08)',         text: 'var(--accent-teal)',    border: 'rgba(8,145,178,0.2)' },
-  indigo: { bg: 'rgba(79,70,229,0.08)',         text: '#4F46E5',               border: 'rgba(79,70,229,0.2)' },
+  blue:   { solid: '#1352CC', light: '#EEF3FF', border: 'rgba(19,82,204,0.18)',  glow: 'rgba(19,82,204,0.12)' },
+  orange: { solid: '#F97316', light: '#FFF4ED', border: 'rgba(249,115,22,0.18)', glow: 'rgba(249,115,22,0.12)' },
+  green:  { solid: '#16A34A', light: '#F0FDF4', border: 'rgba(22,163,74,0.18)',  glow: 'rgba(22,163,74,0.12)' },
+  purple: { solid: '#7C3AED', light: '#F5F3FF', border: 'rgba(124,58,237,0.18)', glow: 'rgba(124,58,237,0.12)' },
+  teal:   { solid: '#0891B2', light: '#ECFEFF', border: 'rgba(8,145,178,0.18)',  glow: 'rgba(8,145,178,0.12)' },
+  indigo: { solid: '#4F46E5', light: '#EEF2FF', border: 'rgba(79,70,229,0.18)',  glow: 'rgba(79,70,229,0.12)' },
 };
 
 function useInView(ref) {
   const [v, setV] = useState(false);
   useEffect(() => {
-    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setV(true); }, { threshold: 0.1 });
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setV(true); }, { threshold: 0.05 });
     if (ref.current) obs.observe(ref.current);
     return () => obs.disconnect();
   }, [ref]);
@@ -146,48 +148,68 @@ export default function Careers() {
               <div
                 key={role.no}
                 className={`career-card fade-in ${visible ? 'visible' : ''}`}
-                style={{ transitionDelay: `${i * 0.08}s` }}
+                style={{
+                  transitionDelay: `${i * 0.08}s`,
+                  '--c-solid': c.solid,
+                  '--c-light': c.light,
+                  '--c-border': c.border,
+                  '--c-glow': c.glow,
+                }}
               >
-                <div className="career-card__bar" style={{ background: c.text }} />
+                {/* Colored top bar */}
+                <div className="career-card__top-bar" />
 
-                <div className="career-card__top">
-                  <div className="career-card__icon" style={{ background: c.bg, color: c.text, border: `1px solid ${c.border}` }}>
-                    {role.icon}
+                {/* Header */}
+                <div className="career-card__header">
+                  <div className="career-card__icon-wrap">
+                    <div className="career-card__icon">{role.icon}</div>
                   </div>
-                  <div>
-                    <span className="career-card__no" style={{ color: c.text }}>{role.no}</span>
+                  <div className="career-card__meta">
+                    <span className="career-card__no">Position {role.no}</span>
                     <h3 className="career-card__title">{role.title}</h3>
                     {role.type && (
-                      <span className="career-card__type" style={{ background: c.bg, color: c.text, border: `1px solid ${c.border}` }}>
-                        {role.type}
-                      </span>
+                      <span className="career-card__type">{role.type}</span>
                     )}
                   </div>
+                  <span className="career-card__ghost">{role.no}</span>
                 </div>
 
-                {role.qualLabel && (
-                  <p className="career-card__qual-label" style={{ color: c.text }}>Qualifications</p>
-                )}
+                {/* Divider */}
+                <div className="career-card__divider" />
 
-                <ul className="career-card__list">
-                  {role.points.map((pt, j) => (
-                    <li key={j} className="career-card__point">
-                      <span className="career-card__dot" style={{ background: c.text }} />
-                      {pt}
-                    </li>
-                  ))}
-                </ul>
+                {/* Requirements */}
+                <div className="career-card__body">
+                  {role.qualLabel && (
+                    <p className="career-card__qual-label">Qualifications</p>
+                  )}
+                  <ul className="career-card__list">
+                    {role.points.map((pt, j) => (
+                      <li key={j} className="career-card__point">
+                        <svg className="career-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                          <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        {pt}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-                <div className="career-card__apply-wrap" style={{ background: c.bg, border: `1px solid ${c.border}` }}>
-                  <div className="career-card__apply-header" style={{ color: c.text }}>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                {/* Apply footer */}
+                <div className="career-card__footer">
+                  <div className="career-card__footer-label">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                      <polyline points="22,6 12,13 2,6"/>
+                    </svg>
                     Send your CV to
                   </div>
-                  {(role.emails || ['drivethrudata99@gmail.com']).map(email => (
-                    <a key={email} href={`mailto:${email}`} className="career-card__apply-email" style={{ color: c.text }}>
-                      {email}
-                    </a>
-                  ))}
+                  <div className="career-card__emails">
+                    {role.emails.map(email => (
+                      <a key={email} href={`mailto:${email}`} className="career-card__email">
+                        {email}
+                      </a>
+                    ))}
+                  </div>
                 </div>
               </div>
             );
