@@ -86,27 +86,13 @@ a { text-decoration: none; color: inherit; }
 .section-eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
   font-family: var(--font-heading);
-  font-size: 0.7rem;
+  font-size: 0.88rem;
   font-weight: 800;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--primary);
   margin-bottom: 18px;
-  position: relative;
-  padding-left: 14px;
-}
-.section-eyebrow::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--primary);
 }
 
 /* ─── Section titles ─── */

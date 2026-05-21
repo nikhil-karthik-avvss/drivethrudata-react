@@ -90,10 +90,10 @@
 
 .insight__heading {
   font-family: var(--font-heading);
-  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
-  font-weight: 900;
-  line-height: 1.2;
-  letter-spacing: -0.03em;
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: -0.01em;
   color: var(--text-heading);
   margin-bottom: 18px;
 }

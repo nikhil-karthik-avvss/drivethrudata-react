@@ -96,7 +96,6 @@ export default function Hero() {
               onError={(e) => { e.target.parentElement.classList.add('hero__img-frame--fallback'); }}
             />
             <div className="hero__chip hero__chip--top">
-              <div className="hero__chip-dot" />
               <span>AI-Powered Solutions</span>
             </div>
           </div>

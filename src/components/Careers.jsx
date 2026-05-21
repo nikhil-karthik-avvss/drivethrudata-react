@@ -12,10 +12,9 @@ const roles = [
       </svg>
     ),
     points: [
-      'Person with Strong AI & Data experience from Industry',
-      'Hands on work experience with AIML, GenAI & Agent AI',
-      'Minimum 15 years of Project experience',
-      'Good Communication Skills',
+      'Strong AI & Data experience from industry with a minimum of 15 years of project experience.',
+      'Hands-on work experience with AI/ML, GenAI & Agent AI.',
+      'Good communication skills.',
     ],
   },
   {
@@ -29,16 +28,90 @@ const roles = [
       </svg>
     ),
     points: [
-      'Engineering Graduates with strong coding experience in Python and Java',
-      'Exposure to AIML, GenAI',
-      'Exposure to Data Science is preferred',
+      'Engineering graduates with strong coding experience in Python and Java.',
+      'Exposure to AI/ML and GenAI.',
+      'Exposure to Data Science is preferred.',
+    ],
+  },
+  {
+    no: '03',
+    title: 'Business Development Manager',
+    color: 'green',
+    emails: ['hemavenkat@drivethrudata.com', 'info@drivethrudata.com'],
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/>
+        <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+      </svg>
+    ),
+    points: [
+      'Strong flair for selling products & services to customers.',
+      'Influencing and convincing skills to sell AI products, services & solutions.',
+      'Willing to work in a revenue-sharing model.',
+    ],
+  },
+  {
+    no: '04',
+    title: 'AI Architect',
+    color: 'purple',
+    emails: ['hemavenkat@drivethrudata.com', 'info@drivethrudata.com'],
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+        <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+        <path d="M7 8h3m4 0h3M7 12h10"/>
+      </svg>
+    ),
+    points: [
+      '10+ years of experience required.',
+      'Strong AI & Data engineering experience with hands-on architect design.',
+      'Broad knowledge of AI tools, processes & techniques including Gen AI and Agent AI.',
+      'Ability to translate business requirements into design and lead the project team.',
+    ],
+  },
+  {
+    no: '05',
+    title: 'Data Architect',
+    type: 'Part-Time Consultant',
+    color: 'teal',
+    emails: ['drivethrudata99@gmail.com', 'info@drivethrudata.com'],
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+        <ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+        <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+      </svg>
+    ),
+    qualLabel: true,
+    points: [
+      'Overall 15+ years of experience with min 4–5 years in Data Engineering, Data Analytics, Databricks, Snowflake, data pipelines, Data Governance, etc.',
+      'Strong experience in solution development for client-specific problems in Data Engineering & Analytics.',
+    ],
+  },
+  {
+    no: '06',
+    title: 'AI Architect',
+    type: 'Part-Time Consultant',
+    color: 'indigo',
+    emails: ['drivethrudata99@gmail.com', 'info@drivethrudata.com'],
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+      </svg>
+    ),
+    qualLabel: true,
+    points: [
+      'Overall 15+ years of experience with minimum 2–3 years in Data Analytics, AI/ML, Gen AI & Agent AI solution development and design for customer projects.',
+      'Strong experience in building AI solution architecture & design for client-specific problems.',
     ],
   },
 ];
 
 const colorMap = {
-  blue:   { bg: 'var(--primary-light)',       text: 'var(--primary)',       border: 'rgba(19,82,204,0.2)' },
-  orange: { bg: 'rgba(249,115,22,0.08)',       text: 'var(--accent-orange)', border: 'rgba(249,115,22,0.2)' },
+  blue:   { bg: 'var(--primary-light)',        text: 'var(--primary)',        border: 'rgba(19,82,204,0.2)' },
+  orange: { bg: 'rgba(249,115,22,0.08)',        text: 'var(--accent-orange)',  border: 'rgba(249,115,22,0.2)' },
+  green:  { bg: 'rgba(22,163,74,0.08)',         text: 'var(--accent-green)',   border: 'rgba(22,163,74,0.2)' },
+  purple: { bg: 'rgba(124,58,237,0.08)',        text: 'var(--accent-purple)',  border: 'rgba(124,58,237,0.2)' },
+  teal:   { bg: 'rgba(8,145,178,0.08)',         text: 'var(--accent-teal)',    border: 'rgba(8,145,178,0.2)' },
+  indigo: { bg: 'rgba(79,70,229,0.08)',         text: '#4F46E5',               border: 'rgba(79,70,229,0.2)' },
 };
 
 function useInView(ref) {
@@ -73,7 +146,7 @@ export default function Careers() {
               <div
                 key={role.no}
                 className={`career-card fade-in ${visible ? 'visible' : ''}`}
-                style={{ transitionDelay: `${i * 0.1}s` }}
+                style={{ transitionDelay: `${i * 0.08}s` }}
               >
                 <div className="career-card__bar" style={{ background: c.text }} />
 
@@ -84,8 +157,17 @@ export default function Careers() {
                   <div>
                     <span className="career-card__no" style={{ color: c.text }}>{role.no}</span>
                     <h3 className="career-card__title">{role.title}</h3>
+                    {role.type && (
+                      <span className="career-card__type" style={{ background: c.bg, color: c.text, border: `1px solid ${c.border}` }}>
+                        {role.type}
+                      </span>
+                    )}
                   </div>
                 </div>
+
+                {role.qualLabel && (
+                  <p className="career-card__qual-label" style={{ color: c.text }}>Qualifications</p>
+                )}
 
                 <ul className="career-card__list">
                   {role.points.map((pt, j) => (
@@ -96,14 +178,17 @@ export default function Careers() {
                   ))}
                 </ul>
 
-                <a
-                  href="mailto:drivethrudata99@gmail.com"
-                  className="career-card__apply"
-                  style={{ background: c.bg, color: c.text, border: `1px solid ${c.border}` }}
-                >
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                  Apply — drivethrudata99@gmail.com
-                </a>
+                <div className="career-card__apply-wrap" style={{ background: c.bg, border: `1px solid ${c.border}` }}>
+                  <div className="career-card__apply-header" style={{ color: c.text }}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    Send your CV to
+                  </div>
+                  {(role.emails || ['drivethrudata99@gmail.com']).map(email => (
+                    <a key={email} href={`mailto:${email}`} className="career-card__apply-email" style={{ color: c.text }}>
+                      {email}
+                    </a>
+                  ))}
+                </div>
               </div>
             );
           })}
