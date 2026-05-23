@@ -150,11 +150,14 @@ export default function TechFocus() {
                   <span className="tech-card__num">{String(i + 1).padStart(2, '0')}</span>
                 </div>
                 <h3 className="tech-card__title">{t.title}</h3>
-                <div className="tech-card__tags">
+                <ul className="tech-card__list">
                   {t.tags.map(tag => (
-                    <span key={tag} className="tech-card__tag">{tag}</span>
+                    <li key={tag} className="tech-card__item">
+                      <span className="tech-card__bullet" />
+                      {tag}
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
             );
           })}
