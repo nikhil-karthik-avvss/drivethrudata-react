@@ -78,10 +78,6 @@ export default function Navbar() {
             ))}
           </ul>
 
-          <Link to="/contact" className="navbar__cta btn-primary">
-            Get Started
-          </Link>
-
           <button
             className={`navbar__hamburger ${menuOpen ? 'navbar__hamburger--open' : ''}`}
             onClick={() => setMenuOpen(!menuOpen)}
@@ -106,9 +102,6 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
-          <Link to="/contact" className="btn-primary mobile-menu__cta" onClick={() => setMenuOpen(false)}>
-            Get Started
-          </Link>
           <div className="mobile-menu__footer">
             <a href="tel:+918148530499" className="top-bar__item" style={{ color: 'var(--text-body)' }}>+91 8148530499</a>
             <a href="mailto:info@drivethrudata.com" className="top-bar__item" style={{ color: 'var(--text-body)' }}>info@drivethrudata.com</a>

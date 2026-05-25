@@ -87,7 +87,7 @@ export default function Hero() {
         </div>
 
         {/* Visual side */}
-        <div className={`hero__visual ${animating ? 'hero__visual--out' : 'hero__visual--in'}`}>
+        <div className="hero__visual">
           <div className="hero__img-frame">
             <img
               src="https://drivethrudata.com/images/main-slider/image-1.jpg"
