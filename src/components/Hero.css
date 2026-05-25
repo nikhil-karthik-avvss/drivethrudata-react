@@ -124,8 +124,8 @@
   position: relative;
   border-radius: var(--radius-xl);
   overflow: hidden;
-  background: var(--bg-alt);
-  box-shadow: var(--shadow-xl), 0 0 0 1px var(--border);
+  background: #060e1f;
+  box-shadow: var(--shadow-xl), 0 0 0 1px var(--border), 0 0 48px rgba(19,82,204,0.12);
   aspect-ratio: 4 / 3;
 }
 .hero__img {

@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './Hero.css';
+import HeroVisual from './HeroVisual';
 
 const slides = [
   {
@@ -89,12 +90,7 @@ export default function Hero() {
         {/* Visual side */}
         <div className="hero__visual">
           <div className="hero__img-frame">
-            <img
-              src="https://drivethrudata.com/images/main-slider/image-1.jpg"
-              alt="DriveThruData"
-              className="hero__img"
-              onError={(e) => { e.target.parentElement.classList.add('hero__img-frame--fallback'); }}
-            />
+            <HeroVisual />
             <div className="hero__chip hero__chip--top">
               <span>AI-Powered Solutions</span>
             </div>
