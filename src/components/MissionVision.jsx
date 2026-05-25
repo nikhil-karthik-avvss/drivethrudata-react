@@ -79,20 +79,56 @@ export default function MissionVision() {
   return (
     <section className="mission-vision" id="about" ref={ref}>
       <div className="container">
-        <div className={`mv__header fade-in ${visible ? 'visible' : ''}`}>
-          <div className="section-eyebrow">Who We Are</div>
-          <h2 className="section-title">Our Mission &amp; <span>Vision</span></h2>
-          <p className="section-subtitle">
-            DriveThruData, as a company, focusing on building a Data Mature organization, assess data landscape, Create Insights from Data and use it for making Critical decisions by the Business Leaders.
-          </p>
+
+        {/* Two-column intro */}
+        <div className={`mv__intro fade-in ${visible ? 'visible' : ''}`}>
+
+          {/* Left: text */}
+          <div className="mv__intro-text">
+            <div className="section-eyebrow">Who We Are</div>
+            <h2 className="section-title">Our Mission &amp; <span>Vision</span></h2>
+            <p className="section-subtitle">
+              DriveThruData, as a company, focuses on building a Data Mature organization — assessing the data landscape, creating insights from data, and using them to drive critical decisions by business leaders.
+            </p>
+          </div>
+
+          {/* Right: image + banners */}
+          <div className="mv__intro-visual">
+            <img
+              src="/vision-mission-gears.png"
+              alt="Vision and Mission"
+              className="mv__gears-img"
+            />
+            <div className="mv__statements">
+              <div className="mv__statement">
+                <div className="mv__statement-icon mv__statement-icon--vision">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </div>
+                <div className="mv__statement-body">
+                  <h4 className="mv__statement-title">Vision</h4>
+                  <p className="mv__statement-text">To transform raw data into meaningful insights and measurable business value — enabling organizations to make smarter, faster, and more confident decisions.</p>
+                </div>
+              </div>
+              <div className="mv__statement">
+                <div className="mv__statement-icon mv__statement-icon--mission">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/><path d="M12 2l1.5 3.5M19 5l-2.5 2.5"/></svg>
+                </div>
+                <div className="mv__statement-body">
+                  <h4 className="mv__statement-title">Mission</h4>
+                  <p className="mv__statement-text">To migrate, modernize, and monetize enterprise data systems — partnering with organizations at every step to build AI-ready, scalable data platforms that drive lasting growth.</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
+        {/* Cards grid */}
         <div className="mv__grid">
           {items.map((item, i) => (
             <div
               key={item.num}
               className={`mv-card mv-card--${item.color} fade-in ${visible ? 'visible' : ''}`}
-              style={{ transitionDelay: `${i * 0.09}s` }}
+              style={{ transitionDelay: `${0.15 + i * 0.09}s` }}
             >
               <div className={`mv-card__icon-wrap mv-icon--${item.color}`}>
                 {item.icon}
