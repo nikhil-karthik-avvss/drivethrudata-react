@@ -94,11 +94,6 @@ export default function MissionVision() {
 
           {/* Right: image + banners */}
           <div className="mv__intro-visual">
-            <img
-              src="/vision-mission-gears.png"
-              alt="Vision and Mission"
-              className="mv__gears-img"
-            />
             <div className="mv__statements">
               <div className="mv__statement">
                 <div className="mv__statement-icon mv__statement-icon--vision">
