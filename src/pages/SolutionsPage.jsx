@@ -74,6 +74,7 @@ const categories = [
     items: [
       { name: 'AI Centre of Excellence Lab',   desc: 'A dedicated research and innovation lab to prototype cutting-edge AI solutions, upskill technical teams, and accelerate enterprise-wide AI adoption through structured experimentation.', icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0 0h18"/></svg> },
       { name: 'ERP for Academic Management',   desc: 'Purpose-built enterprise resource planning that streamlines academic operations, administration, reporting, and institutional data management from end to end.', icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8h10M7 12h6"/></svg> },
+      { name: 'AI Training & Enablement',       desc: 'Structured training programs and hands-on workshops that upskill teams across all levels — from foundational AI literacy to advanced model development and deployment practices.', icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> },
     ],
   },
 ];
@@ -85,11 +86,6 @@ const colorMap = {
   orange: { solid: 'var(--accent-orange)', light: 'rgba(249,115,22,0.07)',   border: 'rgba(249,115,22,0.15)', glow: 'rgba(249,115,22,0.2)' },
 };
 
-const ArrowIcon = () => (
-  <svg className="sol-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M7 17L17 7M17 7H7M17 7v10"/>
-  </svg>
-);
 
 function CategorySection({ cat }) {
   const ref = useRef(null);
@@ -126,7 +122,7 @@ function CategorySection({ cat }) {
             >
               <div className="sol-card__top">
                 <div className="sol-card__icon">{item.icon}</div>
-                <ArrowIcon />
+
               </div>
               <p className="sol-card__name">{item.name}</p>
               <p className="sol-card__desc">{item.desc}</p>

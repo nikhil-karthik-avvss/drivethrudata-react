@@ -8,6 +8,7 @@ import Services from './components/Services';
 
 import AboutPage from './pages/AboutPage';
 import SolutionsPage from './pages/SolutionsPage';
+import OfferingsPage from './pages/OfferingsPage';
 import IndustriesPage from './pages/IndustriesPage';
 import TechnologyPage from './pages/TechnologyPage';
 import PlatformsPage from './pages/PlatformsPage';
@@ -33,6 +34,7 @@ export default function App() {
       <Route path="/"            element={<HomePage />} />
       <Route path="/about"       element={<AboutPage />} />
       <Route path="/solutions"   element={<SolutionsPage />} />
+      <Route path="/offerings"   element={<OfferingsPage />} />
       <Route path="/industries"  element={<IndustriesPage />} />
       <Route path="/technology"  element={<TechnologyPage />} />
       <Route path="/platforms"   element={<PlatformsPage />} />

@@ -56,7 +56,7 @@ export default function HowWeWork() {
       <div className="container">
         <div className={`hww__header fade-in ${visible ? 'visible' : ''}`}>
           <div className="section-eyebrow">Process</div>
-          <h2 className="section-title">How We Work &amp; <span>What You Get</span></h2>
+          <h2 className="section-title">How We Work &amp;<br /><span>What You Get</span></h2>
           <p className="section-subtitle">
             Customer relations with transparent communication. A three-phase engagement that builds lasting capability, not just deliverables.
           </p>
